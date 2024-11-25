@@ -24,13 +24,10 @@ public class Application implements ForCalculatingTaxes {
     }
 
     private ForGettingTaxRates getTaxRateProvider(TaxableType type) {
-        switch (type) {
-            case Individual:
-                return personalTaxRateProvider;
-            case Business:
-                return businessTaxRateProvider;
-        }
-        return null;
+        return switch (type) {
+            case Individual ->  personalTaxRateProvider;
+            case Business -> businessTaxRateProvider;
+        };
     }
 
 }
